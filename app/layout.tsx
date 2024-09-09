@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import BatteryStats from "@/components/battery-stats";
+import ScreenControls from "@/components/screen-controls";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
       >
-        <div className="text-3xl px-8 py-3">SMG Server</div>
+        <div className="flex justify-between items-center px-8 py-3">
+          <div className="text-3xl">SMG Server</div>
+          <div className="flex gap-5 items-center">
+            <ScreenControls />
+            <BatteryStats />
+          </div>
+        </div>
         <div className="bg-primary">{children}</div>
       </body>
     </html>
