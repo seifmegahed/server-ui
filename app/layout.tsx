@@ -26,9 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
       >
-        {children}
+        <div className="text-3xl px-8 py-3">SMG Server</div>
+        <div className="bg-primary">{children}</div>
       </body>
     </html>
   );
