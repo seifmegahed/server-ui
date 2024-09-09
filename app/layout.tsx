@@ -14,6 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  icons: [{ rel: "icon", url: "/favicon.svg" }],
   title: "SMG",
   description: "SMG Server UI",
 };
