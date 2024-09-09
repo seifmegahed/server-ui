@@ -9,9 +9,9 @@
   "packageManager": "pnpm@9.9.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "dev": "tsup websockets/index.ts --onSuccess \"node dist/index.cjs\"",
+    "build": "next build && tsup websockets/index.ts",
+    "start": "NODE_ENV=production node dist/index.cjs",
     "lint": "next lint"
   },
   "dependencies": {
@@ -37,6 +37,7 @@
     "eslint-config-next": "14.2.8",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "tsup": "^8.2.4",
     "typescript": "^5"
   }
 }
