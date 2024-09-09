@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import BatteryStats from "@/components/battery-stats";
+// import BatteryStats from "@/components/battery-stats";
 import ScreenControls from "@/components/screen-controls";
+import BatteryStatsSocket from "@/components/battery-stats-socket";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,7 +36,8 @@ export default function RootLayout({
           <div className="text-3xl">SMG Server</div>
           <div className="flex gap-5 items-center">
             <ScreenControls />
-            <BatteryStats />
+            {/* <BatteryStats /> */}
+            <BatteryStatsSocket />
           </div>
         </div>
         <div className="bg-primary">{children}</div>
