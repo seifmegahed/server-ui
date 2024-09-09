@@ -9,6 +9,7 @@ import {
   Battery,
   BatteryMedium,
   BatteryLow,
+  WifiOff,
 } from "lucide-react";
 
 type BatteryDataType = {
@@ -18,6 +19,7 @@ type BatteryDataType = {
 };
 
 function BatteryStatsSocket() {
+  const [connected, setConnected] = useState(false);
   const [battery, setBattery] = useState({
     status: "",
     chargeStep: 0,
@@ -26,18 +28,21 @@ function BatteryStatsSocket() {
 
   useEffect(() => {
     if (!socket) return;
-    socket.on("connected", (socket) => {
-      console.log("connected", socket.id);
+    socket.on("disconnect", () => {
+      setConnected(false);
     });
     socket.on("battery", (data: BatteryDataType) => {
+      setConnected(true);
       setBattery(data);
     });
     return () => {
       if (!socket) return;
-      socket.off("connected");
       socket.off("battery");
+      socket.off("disconnect");
     };
   }, []);
+
+  if (!connected) return <WifiOff />;
 
   return (
     <div className="flex gap-2 items-center">
@@ -56,7 +61,7 @@ function BatteryIcon({
 }) {
   switch (status) {
     case "Charging\n":
-      return <BatteryCharging />;
+      return <BatteryCharging size={20} />;
     default:
       switch (chargeStep) {
         case 3:
