@@ -42,7 +42,7 @@ function BatteryStatsSocket() {
     };
   }, []);
 
-  if (!connected) return <WifiOff />;
+  if (!connected) return <WifiOff size={16} />;
 
   return (
     <div className="flex gap-2 items-center">
@@ -51,6 +51,8 @@ function BatteryStatsSocket() {
     </div>
   );
 }
+
+const batteryIconSize = 22;
 
 function BatteryIcon({
   status,
@@ -61,17 +63,17 @@ function BatteryIcon({
 }) {
   switch (status) {
     case "Charging\n":
-      return <BatteryCharging size={20} />;
+      return <BatteryCharging size={batteryIconSize} />;
     default:
       switch (chargeStep) {
         case 3:
-          return <BatteryFull />;
+          return <BatteryFull size={batteryIconSize} />;
         case 2:
-          return <BatteryMedium />;
+          return <BatteryMedium size={batteryIconSize} />;
         case 1:
-          return <BatteryLow />;
+          return <BatteryLow size={batteryIconSize} />;
         default:
-          return <Battery />;
+          return <Battery size={batteryIconSize} />;
       }
   }
 }

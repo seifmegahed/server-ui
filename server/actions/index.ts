@@ -4,7 +4,12 @@ import fs from "fs/promises";
 
 const batteryPath = "/sys/class/power_supply/BAT0/";
 
-export const getFiles = async (dir: string) => await fs.readdir(dir);
+export const getFiles = async (dir: string) =>
+  await fs
+    .readdir(dir)
+    .then((files) =>
+      files.filter((file) => !file.startsWith(".") && !file.startsWith("$"))
+    );
 
 export const getBattery = async () => {
   const statusFile = await fs.readFile(batteryPath + "status");
@@ -15,9 +20,8 @@ export const getBattery = async () => {
     charge: chargeFile.toString(),
     chargeFull: chargeFullFile.toString(),
   };
-  
 };
 
 export const toggleScreen = async () => {
-  exec("../../toggle-screen.sh");
+  exec("sudo ../../toggle-screen.sh");
 };

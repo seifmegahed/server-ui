@@ -32,9 +32,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
       >
-        <div className="flex justify-between items-center px-8 py-3">
-          <div className="text-3xl">SMG Server</div>
-          <div className="flex gap-5 items-center">
+        <div className="flex justify-between items-center px-5 py-3">
+          <div className="text-2xl font-bold">SMG Server</div>
+          <div className="flex gap-3 items-center">
             <ScreenControls />
             {/* <BatteryStats /> */}
             <BatteryStatsSocket />

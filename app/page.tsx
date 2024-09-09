@@ -1,15 +1,12 @@
+import FileCard from "@/components/file-card";
 import { getFiles } from "@/server/actions";
-import { Folder } from "lucide-react";
 
 export default async function Home() {
-  const files = await getFiles("../../");
+  const files = await getFiles("/media/seifmegahed/Media SMG/Movies");
   return (
-    <div className="flex flex-col gap-4 p-4 h-full w-full">
-      {files.map((file) => (
-        <div key={file} className="flex gap-2 items-center">
-          <Folder />
-          <div className="text-2xl">{file}</div>
-        </div>
+    <div className="flex flex-col gap-2 p-4 h-full w-full">
+      {files.map((fileName) => (
+        <FileCard key={fileName} fileName={fileName} />
       ))}
     </div>
   );

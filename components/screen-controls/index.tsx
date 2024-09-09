@@ -1,16 +1,18 @@
 "use client";
 
 import { toggleScreen } from "@/server/actions";
-import { 
-  Monitor, 
-  // MonitorOff 
+import {
+  Monitor,
+  // MonitorOff
 } from "lucide-react";
 
 function ScreenControls() {
   return (
-    <div className="flex gap-2 items-center cursor-pointer" onClick={() => toggleScreen()}>
-      <Monitor size={20} />
-      {/* <MonitorOff size={20} /> */}
+    <div onClick={() => toggleScreen()}>
+      <Monitor
+        size={16}
+        className="cursor-pointer hover:scale-110 transition-transform duration-200 ease-in-out"
+      />
     </div>
   );
 }
