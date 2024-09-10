@@ -6,6 +6,11 @@ import BatteryIcon from "@/icons/BatteryIcon";
 
 import { WifiOff } from "lucide-react";
 
+const batteryStatus = {
+  Charging: "Charging\n",
+  Full: "Full\n",
+};
+
 type BatteryDataType = {
   status: string;
   chargeStep: number;
@@ -40,11 +45,18 @@ function BatteryStatsSocket() {
 
   return (
     <div className="flex gap-2 items-center">
+      <div className="text-sm">
+        {battery.status === batteryStatus.Full ? 100 : battery.charge}%
+      </div>
       <BatteryIcon
-        percentage={battery.charge}
-        charging={battery.status === "Charging\n"}
+        percentage={
+          battery.status === batteryStatus.Full ? 100 : battery.charge
+        }
+        charging={
+          battery.status === batteryStatus.Charging ||
+          battery.status === batteryStatus.Full
+        }
       />
-      <div className="text-md">{battery.charge}%</div>
     </div>
   );
 }
