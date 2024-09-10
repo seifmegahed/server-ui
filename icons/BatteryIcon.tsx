@@ -28,7 +28,7 @@ function BatteryIcon({
           d="M6.5 10.5L14.5 1L12.5 7.5H16L8 17L10.5 10.5H6.5Z"
           fill={fill}
           stroke={background}
-          stroke-width="0.6"
+          strokeWidth="0.6"
         />
       )}
     </svg>

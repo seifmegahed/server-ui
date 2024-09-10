@@ -3,8 +3,8 @@ import next from "next";
 import { Server } from "socket.io";
 
 import { getBattery } from "./battery";
-import { getWifiStatus } from "./wifi";
-import { getTemperature } from "./temperature";
+// import { getWifiStatus } from "./wifi";
+// import { getTemperature } from "./temperature";
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
@@ -20,9 +20,9 @@ app.prepare().then(() => {
   const io = new Server(httpServer);
 
   setInterval(async () => {
-    getWifiStatus();
-    getTemperature();
-    console.log();
+    // getWifiStatus();
+    // getTemperature();
+    // console.log();
 
     io.sockets.emit("battery", getBattery());
   }, 5000);
