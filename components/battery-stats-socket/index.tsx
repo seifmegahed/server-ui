@@ -2,15 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { socket } from "@/socket";
+import BatteryIcon from "@/icons/BatteryIcon";
 
-import {
-  BatteryFull,
-  BatteryCharging,
-  Battery,
-  BatteryMedium,
-  BatteryLow,
-  WifiOff,
-} from "lucide-react";
+import { WifiOff } from "lucide-react";
 
 type BatteryDataType = {
   status: string;
@@ -46,36 +40,13 @@ function BatteryStatsSocket() {
 
   return (
     <div className="flex gap-2 items-center">
-      <BatteryIcon status={battery.status} chargeStep={battery.chargeStep} />
+      <BatteryIcon
+        percentage={battery.charge}
+        charging={battery.status === "Charging\n"}
+      />
       <div className="text-md">{battery.charge}%</div>
     </div>
   );
-}
-
-const batteryIconSize = 22;
-
-function BatteryIcon({
-  status,
-  chargeStep,
-}: {
-  status: string;
-  chargeStep: number;
-}) {
-  switch (status) {
-    case "Charging\n":
-      return <BatteryCharging size={batteryIconSize} />;
-    default:
-      switch (chargeStep) {
-        case 3:
-          return <BatteryFull size={batteryIconSize} />;
-        case 2:
-          return <BatteryMedium size={batteryIconSize} />;
-        case 1:
-          return <BatteryLow size={batteryIconSize} />;
-        default:
-          return <Battery size={batteryIconSize} />;
-      }
-  }
 }
 
 export default BatteryStatsSocket;

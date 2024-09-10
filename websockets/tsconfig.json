@@ -5,12 +5,12 @@
     "lib": [
       "es2023"
     ],
-    "module": "Node16",
+    "module": "Preserve",
     "target": "es2022",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16",
+    "moduleResolution": "Bundler",
     "noUncheckedIndexedAccess": true,
     "noEmit": true,
     /* Additional Options */
