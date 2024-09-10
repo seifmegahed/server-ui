@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-// import BatteryStats from "@/components/battery-stats";
+
 import ScreenControls from "@/components/screen-controls";
 import BatteryStatsSocket from "@/components/battery-stats-socket";
 
@@ -28,19 +28,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
       >
-        <div className="flex justify-between items-center px-5 py-3">
+        <div className="flex justify-between items-center px-5 py-3 border-b  ">
           <div className="text-2xl font-bold">SMG Server</div>
           <div className="flex gap-3 items-center">
-            <ScreenControls />
-            {/* <BatteryStats /> */}
             <BatteryStatsSocket />
+            <ScreenControls />
           </div>
         </div>
-        <div className="bg-primary">{children}</div>
+        <div>{children}</div>
       </body>
     </html>
   );
