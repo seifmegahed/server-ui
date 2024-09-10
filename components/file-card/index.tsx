@@ -11,7 +11,7 @@ function FileCard({
   onClick?: () => void;
 }) {
   return (
-    <Link href={`/api/download-file/${fileName}`}>
+    <Link href={`/api/download-file/${fileName}`} className="w-fit">
       <div className="flex gap-2 items-center transition-all duration-300 ease-in-out text-gray-400 hover:text-white w-fit">
         <div>
           <File size={20} />

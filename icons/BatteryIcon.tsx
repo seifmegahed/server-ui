@@ -20,7 +20,7 @@ function BatteryIcon({
       viewBox="0 0 26 18"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect x="0.5" y="2.5" width="22" height="11" rx="2.5" stroke={stroke} />
+      <rect x="0.5" y="2.5" width="22" height="11" rx="2.5" stroke={stroke} strokeWidth="0.8" />
       <path
         d="M25.5 8C25.5 9.5 25 10 24 10C24 9.11383 24 9.10457 24 8C24 6.89543 24 6.82537 24 6.11383C25 6.11383 25.5 6.5 25.5 8Z"
         fill={stroke}
