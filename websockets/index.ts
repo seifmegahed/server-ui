@@ -8,7 +8,7 @@ import { getBattery } from "./battery";
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
-const port = 3000;
+const port = 4000;
 
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port });
@@ -23,9 +23,10 @@ app.prepare().then(() => {
     // getWifiStatus();
     // getTemperature();
     // console.log();
-
-    io.sockets.emit("battery", getBattery());
-  }, 5000);
+    const data = getBattery();
+    // console.log(data);
+    io.sockets.emit("battery", data);
+  }, 1000);
 
   httpServer
     .once("error", (err) => {
